@@ -13,6 +13,8 @@
 		4B5A7CBF1DEF35C50068D805 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B5A7CBE1DEF35C50068D805 /* Assets.xcassets */; };
 		4B5A7CC21DEF35C50068D805 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B5A7CC01DEF35C50068D805 /* LaunchScreen.storyboard */; };
 		4BAF93991DEF5BAC00F80A18 /* TodoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAF93981DEF5BAC00F80A18 /* TodoRouter.swift */; };
+		4BF8A4321DEF846A00CB14EF /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8A4311DEF846A00CB14EF /* Todo.swift */; };
+		4BF8A4341DEF934900CB14EF /* Todo+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8A4331DEF934900CB14EF /* Todo+Networking.swift */; };
 		911AC295AF5C0EB656043C8A /* Pods_Grok101.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B122385C33C9EEBF1E18E /* Pods_Grok101.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +30,8 @@
 		4B5A7CC11DEF35C50068D805 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B5A7CC31DEF35C50068D805 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BAF93981DEF5BAC00F80A18 /* TodoRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoRouter.swift; sourceTree = "<group>"; };
+		4BF8A4311DEF846A00CB14EF /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		4BF8A4331DEF934900CB14EF /* Todo+Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Todo+Networking.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,8 @@
 				4B5A7CBE1DEF35C50068D805 /* Assets.xcassets */,
 				4B5A7CC01DEF35C50068D805 /* LaunchScreen.storyboard */,
 				4B5A7CC31DEF35C50068D805 /* Info.plist */,
+				4BF8A4311DEF846A00CB14EF /* Todo.swift */,
+				4BF8A4331DEF934900CB14EF /* Todo+Networking.swift */,
 			);
 			path = Grok101;
 			sourceTree = "<group>";
@@ -217,6 +223,8 @@
 				4BAF93991DEF5BAC00F80A18 /* TodoRouter.swift in Sources */,
 				4B5A7CBA1DEF35C50068D805 /* ViewController.swift in Sources */,
 				4B5A7CB81DEF35C50068D805 /* AppDelegate.swift in Sources */,
+				4BF8A4341DEF934900CB14EF /* Todo+Networking.swift in Sources */,
+				4BF8A4321DEF846A00CB14EF /* Todo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
