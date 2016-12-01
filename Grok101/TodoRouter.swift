@@ -19,21 +19,21 @@ enum TodoRouter: URLRequestConvertible {
   func asURLRequest() throws -> URLRequest {
     var method: HTTPMethod {
       switch self {
-      case .get:
-        return .get
-      case .create:
-        return .post
-      case .delete:
-        return .delete
+        case .get:
+          return .get
+        case .create:
+          return .post
+        case .delete:
+          return .delete
       }
     }
 
     let params: ([String: Any]?) = {
       switch self {
-      case .get, .delete:
-        return nil
-      case .create(let newTodo):
-        return newTodo
+        case .get, .delete:
+          return nil
+        case .create(let newTodo):
+          return newTodo
       }
     }()
 
@@ -41,12 +41,12 @@ enum TodoRouter: URLRequestConvertible {
       let relativePath: String?
 
       switch self {
-      case .get(let number):
-        relativePath = "todos/\(number)"
-      case .create:
-        relativePath = "todos"
-      case .delete(let number):
-        relativePath = "todos/\(number)"
+        case .get(let number):
+          relativePath = "todos/\(number)"
+        case .create:
+          relativePath = "todos"
+        case .delete(let number):
+          relativePath = "todos/\(number)"
       }
 
       var url = URL(string: TodoRouter.baseURLString)!

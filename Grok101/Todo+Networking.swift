@@ -26,28 +26,10 @@ extension Todo {
     self.init(title: title, id: idValue, userId: userId, completedStatus: completed)
   }
 
-  func todoByID(id: Int, completionHandler: @escaping(Result<Todo>) -> Void) {
+  static func todoByID(id: Int, completionHandler: @escaping(Result<Todo>) -> Void) {
     Alamofire.request(TodoRouter.get(id)).responseJSON { response in
-      guard response.result.error == nil else {
-        print("error calling GET on /todos/\(id)")
-        print(response.result.error!)
-        completionHandler(.failure(response.result.error!))
-        return
-      }
-
-
-      guard let json = response.result.value as? [String: Any] else {
-        print("didn't get todo object as JSON from API")
-        completionHandler(.failure(BackendError.objectSerialization(reason: "Did not get JSON dictionary in response")))
-        return
-      }
-
-      guard let todo = Todo(json: json) else {
-        completionHandler(.failure(BackendError.objectSerialization(reason: "Could not create Todo object from JSON")))
-        return
-      }
-
-      completionHandler(.success(todo))
+      let result = Todo.todoFromResponse(response: response)
+      completionHandler(result)
     }
   }
 
@@ -60,6 +42,32 @@ extension Todo {
     json["userId"] = userId
     json["completed"] = completed
     return json
+  }
+
+  func save(completionHandler: @escaping(Result<Todo>) -> Void) {
+    let fields = self.toJSON()
+    Alamofire.request(TodoRouter.create(fields)).responseJSON { response in
+      let result = Todo.todoFromResponse(response: response)
+      completionHandler(result)
+    }
+  }
+
+  private static func todoFromResponse(response: DataResponse<Any>) -> Result<Todo> {
+    guard response.result.error == nil else {
+      print(response.result.error!)
+      return .failure(response.result.error!)
+    }
+
+    guard let json = response.result.value as? [String: Any] else {
+      print("didn't get todo object as JSON from API")
+      return .failure(BackendError.objectSerialization(reason: "Did not get JSON dictionary in response"))
+    }
+
+    guard let todo = Todo(json: json) else {
+      return .failure(BackendError.objectSerialization(reason: "Could not create Todo object from JSON"))
+    }
+
+    return .success(todo)
   }
 
 }
